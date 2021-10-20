@@ -237,13 +237,13 @@ if __name__ == '__main__':
             if command == "ok" or command == "ok poker" or command == "yes":
                 speak("Which type of music do want to play.. binaural beats or lyrics one??")
                 command = listen().lower()
-                if command == "binaural beats":
+                if "binaural beats" in command:
                     speak("Ok playing...")
                     music_folder = "D:\\d data\\NCS music"
                     songs = os.listdir(music_folder)
                     a = random.randint(1, len(songs) - 1)
                     os.startfile(os.path.join(music_folder, songs[a]))
-                elif command == "lyrics one":
+                elif "lyrics one" in command:
                     speak("Ok playing...")
                     music_folder = "D:\\d data\\New songs"
                     songs = os.listdir(music_folder)
