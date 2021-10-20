@@ -222,10 +222,10 @@ if __name__ == '__main__':
             speak("Ok sir have a good day ...")
             break
 
-        elif command == "who are you" or command == "kaun hai tu" or command == "poker who are you":
-            print("I am Pokar, made by Anant, I can help you. Tell me what to do?")
-            speak("I am Pokar, made by Anant, I can help you. Tell me what to do?")
-
+        elif 'who are you' in command:
+            print("I am A.I. developed by Anant, I can help you. Tell me what to do?")
+            speak("I am A.I. developed by Anant, I can help you. Tell me what to do?")
+            
         elif 'open google' in command:
             print("Opening...")
             speak("Opening...")
@@ -253,7 +253,7 @@ if __name__ == '__main__':
             else:
                 speak("Ok sir...")
          
-        elif command == "good job poker" or command == "thankyou poker" or command == "you helped me a lot poker" or command == "thanks":
+        elif command == "good job" or command == "thank you" or command == "you helped me a lot poker" or command == "thanks":
             speak("It's my pleasure sir...")
 
         elif command == "i want to play game" or command == "can you play me a game" or command == "game" or command == "i want to play a game" or command == "play me a game":
