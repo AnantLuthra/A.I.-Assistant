@@ -1,8 +1,6 @@
-import datetime, psutil, os, signal
+import datetime, psutil, os, signal, requests, json, random, wikipedia, webbrowser
 import speech_recognition as sr
-import random
 from playsound import playsound
-import requests, json
 
 # import pyttsx3
 # engine = pyttsx3.init('sapi5')
@@ -196,8 +194,11 @@ if __name__ == '__main__':
 
     while True:
         command = listen().lower()
-        if command == "gana suna de achcha sa" or command == "play a song" or command == "play music" or command == "can you play some music for me":
-            os.startfile(r"D:\d data\New songs\Makhna.mp3")
+        if 'play music' in command:
+            music_folder = "D:\\d data\\New songs"
+            songs = os.listdir(music_folder)
+            a = random.randint(1, len(songs) - 1)
+            os.startfile(os.path.join(music_folder, songs[a]))
 
         elif command == "kya baja diya ye band kr ise" or command == "stop music" or command == "close music":
             speak("Ok closing..")
@@ -211,7 +212,7 @@ if __name__ == '__main__':
             speak("Opening...")
             os.startfile(r"C:\Users\star\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code")
 
-        elif command == "exit" or command == "close" or command == "quit" or command == "poker close" or command == "good bye poker" or command == "goodbye poker" or command == "bye bye" or command == "byebye":
+        elif 'quit' in command:
             print("Ok closing..")
             speak("Ok sir have a good day ...")
             break
@@ -225,7 +226,7 @@ if __name__ == '__main__':
             speak("Opening...")
             os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome")
         
-        elif command == "i am feeling tired" or command == "feeling tired" or command == "feeling tired poker":
+        elif 'feeling tired' in command:
             speak("Should I play some music for you?")
             command = listen()
             if command == "ok" or command == "ok poker" or command == "yes":
@@ -245,7 +246,7 @@ if __name__ == '__main__':
             speak("Ok sir")
             snake_water_gun()
 
-        elif command == "tell me some news" or command == "tell me some news headlines" or command == "news":
+        elif 'news' in command:
             speak("Ok Sir...")
             news_teller()
 
@@ -254,8 +255,25 @@ if __name__ == '__main__':
                 speak("Namaste.. Tell me how can i help you...")
             else:
                 speak("Hello sir i am poker tell me how may i help you...")
-
         
+        elif 'wikipedia' in command:
+            try:
+                speak("Searching Wikipedia....")
+                command = command.replace("wikepedia", "")
+                results = wikipedia.summary(command, sentences=3)
+                speak("According to Wikipedia")
+                print(results)
+                speak(results)
+            
+            except wikipedia.exceptions.PageError:
+                speak("Could not find about the given data..")
+            
+            except Exception as e:
+                print("Something went wrong..")
+            
+        elif 'open youtube' in command:
+            webbrowser.open("youtube.com")
+
         else:
             print("Sorry i can't help you in that...\n")
 
