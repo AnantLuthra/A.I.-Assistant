@@ -2,14 +2,18 @@ import datetime, psutil, os, signal, requests, json, random, wikipedia, webbrows
 import speech_recognition as sr
 from playsound import playsound
 
+# Code for tuning voice of assistant into a famale voice...
 # import pyttsx3
 # engine = pyttsx3.init('sapi5')
 # voices = engine.getProperty('voices')
-# print(voices)
 # engine.setProperty('voice', voices[1].id)
 # def speak(str):
 #     engine.say(str)
 #     engine.runAndWait()
+
+with open("details.txt") as f:
+    data = f.read()
+    info = data.split("\n")
 
 def speak(str):
     '''
@@ -46,7 +50,7 @@ def news_teller():
         speak("Invalid news topic number entered.. Starting telling general news")
         news_channel = "the-times-of-india"
     try:
-        url = f"https://newsapi.org/v2/top-headlines?sources={news_channel}&apiKey=31c98e95bba3475f90f5cd5ec2f0fceb"
+        url = f"https://newsapi.org/v2/top-headlines?sources={news_channel}&apiKey={info[0]}"
         news = requests.get(url).text
         news_dict = json.loads(news)
         # print(news_dict['articles'])
@@ -149,7 +153,7 @@ def wisher():
     elif final_time < 4:
         speak("Sir it's very dark night what are you waiting for sleep now..")
     
-    speak("I am Poker, Please tell me how may I help you....")
+    speak("Please tell me how may I help you....")
 
 def task_closer(app):
     try:
@@ -195,6 +199,7 @@ if __name__ == '__main__':
     while True:
         command = listen().lower()
         if 'play music' in command:
+            speak("Ok playing...")
             music_folder = "D:\\d data\\New songs"
             songs = os.listdir(music_folder)
             a = random.randint(1, len(songs) - 1)
@@ -208,7 +213,7 @@ if __name__ == '__main__':
             speak("Ok closing...")
             task_closer("chrome")
 
-        elif command == "open code" or command == "coding karne ka man kr rha hai":
+        elif 'open code' in command:
             speak("Opening...")
             os.startfile(r"C:\Users\star\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code")
 
@@ -221,7 +226,7 @@ if __name__ == '__main__':
             print("I am Pokar, made by Anant, I can help you. Tell me what to do?")
             speak("I am Pokar, made by Anant, I can help you. Tell me what to do?")
 
-        elif command == "open google":
+        elif 'open google' in command:
             print("Opening...")
             speak("Opening...")
             os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome")
@@ -230,12 +235,21 @@ if __name__ == '__main__':
             speak("Should I play some music for you?")
             command = listen()
             if command == "ok" or command == "ok poker" or command == "yes":
-                speak("Which type of music do want to play..")
-                command = listen()
-                if command == "anything" or command == "whatever you want":
-                    os.startfile(r"D:\d data\New songs\SAKHIYAN.mp3")
-                else:
-                    pass
+                speak("Which type of music do want to play.. binaural beats or lyrics one??")
+                command = listen().lower()
+                if command == "binaural beats":
+                    speak("Ok playing...")
+                    music_folder = "D:\\d data\\NCS music"
+                    songs = os.listdir(music_folder)
+                    a = random.randint(1, len(songs) - 1)
+                    os.startfile(os.path.join(music_folder, songs[a]))
+                elif command == "lyrics one":
+                    speak("Ok playing...")
+                    music_folder = "D:\\d data\\New songs"
+                    songs = os.listdir(music_folder)
+                    a = random.randint(1, len(songs) - 1)
+                    os.startfile(os.path.join(music_folder, songs[a]))
+                    
             else:
                 speak("Ok sir...")
          
@@ -273,6 +287,10 @@ if __name__ == '__main__':
             
         elif 'open youtube' in command:
             webbrowser.open("youtube.com")
+        
+        elif 'the time' in command:
+            a = datetime.datetime.now().strftime("%H:%M:%S")
+            speak(f"Sir the time is{a}")
 
         else:
             print("Sorry i can't help you in that...\n")
