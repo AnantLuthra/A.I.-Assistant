@@ -316,11 +316,12 @@ if __name__ == '__main__':
         #     os.startfile(r"D:\d data\takken 3\Tekken_3.exe")
         elif 'up to date my git':
             speak("Ok sir getting up to date...")
+            pyautogui.hotkey('alt', 'tab')
             time.sleep(2)
             pyautogui.moveTo(x=955, y=527)
             pyautogui.click()
             pyautogui.rightClick()
-            for i in range(9):
+            for i in range(10):
                 pyautogui.press('down')
             pyautogui.press('enter')
             time.sleep(2)
