@@ -328,7 +328,13 @@ if __name__ == '__main__':
             for i in word:
                 pyautogui.press(i)
             pyautogui.press('enter')
-            word2 = "git commit -a -m \"Added new files\""
+            time.sleep(1)
+            word5 = "git add ."
+            for i in word5:
+                pyautogui.press(i)
+            pyautogui.press('enter')
+            time.sleep(2)
+            word2 = "git commit -m \"Added new features\""
             for i in word2:
                 pyautogui.press(i)
             pyautogui.press('enter')
@@ -337,14 +343,14 @@ if __name__ == '__main__':
             for i in word3:
                 pyautogui.press(i)
             pyautogui.press('enter')
-            time.sleep(15)
+            time.sleep(11)
             word4 = "exit"
             for i in word4:
                 pyautogui.press(i)
             pyautogui.press('enter')
             speak("Updated git..")
             break
-        
+
             # pyautogui.hotkey('win', 'd')
             # word = 'this'
             # for i in word:
