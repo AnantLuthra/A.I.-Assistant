@@ -314,7 +314,7 @@ if __name__ == '__main__':
 
         # elif 'tekken 3' in command:
         #     os.startfile(r"D:\d data\takken 3\Tekken_3.exe")
-        elif 'up to date my git':
+        elif command == 'update this directory on github':
             speak("Ok sir getting up to date...")
             pyautogui.hotkey('alt', 'tab')
             time.sleep(2)
@@ -349,6 +349,8 @@ if __name__ == '__main__':
             for i in word4:
                 pyautogui.press(i)
             pyautogui.press('enter')
+            time.sleep(1)
+            pyautogui.hotkey('alt', 'tab')
             speak("Updated git..")
             break
 
