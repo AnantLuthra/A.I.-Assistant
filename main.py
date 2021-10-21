@@ -1,4 +1,4 @@
-import datetime, psutil, os, signal, requests, json, random, wikipedia, webbrowser
+import datetime, psutil, os, signal, requests, json, random, wikipedia, webbrowser, pyautogui, time
 import speech_recognition as sr
 from playsound import playsound
 
@@ -292,8 +292,26 @@ if __name__ == '__main__':
             a = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir the time is{a}")
 
+        elif 'switch window' in command:
+            pyautogui.hotkey('alt', 'tab')
+        
+        elif 'click on start' in command:
+            pyautogui.press('win')
+
+        elif 'open settings' in command:
+            pyautogui.press('win')
+            time.sleep(1)
+            pyautogui.moveTo(x=23, y=655)
+            pyautogui.click()
+
+        elif 'startup folder' in command:
+            pyautogui.hotkey('win', 'r')
+            time.sleep((.5))
+            textt = "shell:startup"
+            for i in textt:
+                pyautogui.press(i)
+            pyautogui.press('enter')
+
         else:
             print("Sorry i can't help you in that...\n")
-
-
 
