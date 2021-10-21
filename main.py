@@ -312,6 +312,63 @@ if __name__ == '__main__':
                 pyautogui.press(i)
             pyautogui.press('enter')
 
+        # elif 'tekken 3' in command:
+        #     os.startfile(r"D:\d data\takken 3\Tekken_3.exe")
+        elif 'up to date my git':
+            speak("Ok sir getting up to date...")
+            time.sleep(2)
+            pyautogui.moveTo(x=955, y=527)
+            pyautogui.click()
+            pyautogui.rightClick()
+            for i in range(9):
+                pyautogui.press('down')
+            pyautogui.press('enter')
+            time.sleep(2)
+            word = "git st"
+            for i in word:
+                pyautogui.press(i)
+            pyautogui.press('enter')
+            word2 = "git commit -a -m \"Added new files\""
+            for i in word2:
+                pyautogui.press(i)
+            pyautogui.press('enter')
+            time.sleep(2)
+            word3 = "git push origin master"
+            for i in word3:
+                pyautogui.press(i)
+            pyautogui.press('enter')
+            time.sleep(15)
+            word4 = "exit"
+            for i in word4:
+                pyautogui.press(i)
+            pyautogui.press('enter')
+            speak("Updated git..")
+            break
+        
+            # pyautogui.hotkey('win', 'd')
+            # word = 'this'
+            # for i in word:
+            #     pyautogui.press(i)
+            # pyautogui.press("enter")
+            # time.sleep(2)
+            # pyautogui.moveTo(x=661, y=382)
+            # time.sleep(2)
+            # pyautogui.click(clicks=2)
+            # time.sleep(2)
+            # pyautogui.moveTo(x=332, y=405)
+            # time.sleep(2)
+            # pyautogui.click(clicks=2)
+            # time.sleep(2)
+            # pyautogui.moveTo(x=379, y=219)
+            # time.sleep(2)
+            # pyautogui.click(clicks=2)
+            # time.sleep(2)
+            # pyautogui.moveTo(x=332, y=405)
+            # time.sleep(2)
+            # pyautogui.click()
+            # time.sleep(2)
+            # pyautogui.leftClick()
+            
         else:
             print("Sorry i can't help you in that...\n")
 
