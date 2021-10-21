@@ -321,7 +321,7 @@ if __name__ == '__main__':
             pyautogui.moveTo(x=955, y=527)
             pyautogui.click()
             pyautogui.rightClick()
-            for i in range(10):
+            for i in range(9):
                 pyautogui.press('down')
             pyautogui.press('enter')
             time.sleep(2)
