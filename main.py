@@ -349,8 +349,6 @@ if __name__ == '__main__':
                 pyautogui.press(i)
             pyautogui.press('enter')
 
-        # elif 'tekken 3' in command:
-        #     os.startfile(r"D:\d data\takken 3\Tekken_3.exe")
         elif command == 'update directory on github':
             speak("Ok sir getting up to date...")
             pyautogui.hotkey('win', 'd')
@@ -371,7 +369,7 @@ if __name__ == '__main__':
             speak("Which directory you want to update on github?")
             directory = listen().lower()
             name_searcher(directory)
-            break
+            continue
             
         else:
             print("Sorry i can't help you in that...\n")
