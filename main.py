@@ -163,6 +163,43 @@ def task_closer(app):
     except Exception as e:
         speak("Something went wrong!! Couldn't close google chrome..")
 
+def command_writer(word, sleep_time):
+    for i in word:
+        pyautogui.press(i)
+    pyautogui.press('enter')
+    time.sleep(sleep_time)
+
+def after_reaching_directory():
+    '''
+    This function complete the task after reaching the main directory which is to be updated 
+    as told by user...
+    '''
+    time.sleep(2)
+    pyautogui.moveTo(x=955, y=527)
+    pyautogui.click()
+    pyautogui.rightClick()
+    for i in range(9):
+        pyautogui.press('down')
+    pyautogui.press('enter')
+    time.sleep(2)
+    command_writer("git st", 1)
+    command_writer("git add .", 2)
+    command_writer("git commit -m \"Added new features\"", 2)
+    command_writer("git push origin master", 11)
+    command_writer("exit", 1)
+    pyautogui.hotkey('alt', 'tab')
+    speak("Updated git..")
+    return "Done\n"
+
+def name_searcher(directory):
+    '''
+    This function takes directory name and enter in the directory
+    and runs after process...
+    '''
+    for i in directory:
+        pyautogui.press(i)
+    pyautogui.press("enter")
+    after_reaching_directory()
 
 def listen():
     '''
@@ -314,69 +351,27 @@ if __name__ == '__main__':
 
         # elif 'tekken 3' in command:
         #     os.startfile(r"D:\d data\takken 3\Tekken_3.exe")
-        elif command == 'update this directory on github':
+        elif command == 'update directory on github':
             speak("Ok sir getting up to date...")
-            pyautogui.hotkey('alt', 'tab')
-            time.sleep(2)
-            pyautogui.moveTo(x=955, y=527)
-            pyautogui.click()
-            pyautogui.rightClick()
-            for i in range(9):
-                pyautogui.press('down')
-            pyautogui.press('enter')
-            time.sleep(2)
-            word = "git st"
+            pyautogui.hotkey('win', 'd')
+            word = 'this'
             for i in word:
                 pyautogui.press(i)
-            pyautogui.press('enter')
-            time.sleep(1)
-            word5 = "git add ."
-            for i in word5:
-                pyautogui.press(i)
-            pyautogui.press('enter')
+            pyautogui.press("enter")
             time.sleep(2)
-            word2 = "git commit -m \"Added new features\""
-            for i in word2:
-                pyautogui.press(i)
-            pyautogui.press('enter')
+            pyautogui.moveTo(x=661, y=382)
             time.sleep(2)
-            word3 = "git push origin master"
-            for i in word3:
+            pyautogui.click(clicks=2)
+            time.sleep(2)
+            word10 = "python"
+            for i in word10:
                 pyautogui.press(i)
-            pyautogui.press('enter')
-            time.sleep(11)
-            word4 = "exit"
-            for i in word4:
-                pyautogui.press(i)
-            pyautogui.press('enter')
-            time.sleep(1)
-            pyautogui.hotkey('alt', 'tab')
-            speak("Updated git..")
+            pyautogui.press("enter")
+            time.sleep(2)
+            speak("Which directory you want to update on github?")
+            directory = listen().lower()
+            name_searcher(directory)
             break
-
-            # pyautogui.hotkey('win', 'd')
-            # word = 'this'
-            # for i in word:
-            #     pyautogui.press(i)
-            # pyautogui.press("enter")
-            # time.sleep(2)
-            # pyautogui.moveTo(x=661, y=382)
-            # time.sleep(2)
-            # pyautogui.click(clicks=2)
-            # time.sleep(2)
-            # pyautogui.moveTo(x=332, y=405)
-            # time.sleep(2)
-            # pyautogui.click(clicks=2)
-            # time.sleep(2)
-            # pyautogui.moveTo(x=379, y=219)
-            # time.sleep(2)
-            # pyautogui.click(clicks=2)
-            # time.sleep(2)
-            # pyautogui.moveTo(x=332, y=405)
-            # time.sleep(2)
-            # pyautogui.click()
-            # time.sleep(2)
-            # pyautogui.leftClick()
             
         else:
             print("Sorry i can't help you in that...\n")
