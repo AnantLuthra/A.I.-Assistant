@@ -352,21 +352,8 @@ if __name__ == '__main__':
         elif command == 'update directory on github':
             speak("Ok sir getting up to date...")
             os.startfile(r"D:\Python projects")
-            # pyautogui.hotkey('win', 'd')
-            # word = 'this'
-            # for i in word:
-            #     pyautogui.press(i)
-            # pyautogui.press("enter")
-            # time.sleep(2)
-            # pyautogui.moveTo(x=661, y=382)
-            # time.sleep(2)
-            # pyautogui.click(clicks=2)
-            # time.sleep(2)
-            # word10 = "python"
-            # for i in word10:
-            #     pyautogui.press(i)
-            # pyautogui.press("enter")
-            # time.sleep(2)
+            time.sleep(1)
+            pyautogui.press('f11')
             speak("Which directory you want to update on github?")
             directory = listen().lower()
             name_searcher(directory)
