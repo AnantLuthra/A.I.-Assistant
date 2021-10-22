@@ -290,7 +290,7 @@ if __name__ == '__main__':
             else:
                 speak("Ok sir...")
          
-        elif command == "good job" or command == "thank you" or command == "you helped me a lot poker" or command == "thanks":
+        elif command == "good job" or command == "thank you" or command == "thanks":
             speak("It's my pleasure sir...")
 
         elif command == "i want to play game" or command == "can you play me a game" or command == "game" or command == "i want to play a game" or command == "play me a game":
