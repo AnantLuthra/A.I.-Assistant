@@ -184,7 +184,9 @@ def after_reaching_directory():
     time.sleep(2)
     command_writer("git st", 1)
     command_writer("git add .", 2)
-    command_writer("git commit -m \"Added new features\"", 2)
+    update_list_name = ["Added new feature", "Updated main.py"]
+    a = random.choice(update_list_name)
+    command_writer(f"git commit -m \"{a}\"", 2)
     command_writer("git push origin master", 11)
     command_writer("exit", 1)
     pyautogui.hotkey('alt', 'tab')
@@ -361,7 +363,6 @@ if __name__ == '__main__':
             
         elif "your name" in command:
             speak("My name is not defined but you can call me with any name..")
-            
+
         else:
             print("Sorry i can't help you in that...\n")
-
