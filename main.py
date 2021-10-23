@@ -184,8 +184,15 @@ def after_reaching_directory():
     time.sleep(2)
     command_writer("git st", 1)
     command_writer("git add .", 2)
-    update_list_name = ["Added new feature", "Updated main.py"]
-    a = random.choice(update_list_name)
+    speak("Do you wanna add custom message for committing file?")
+    opinion = listen().lower()
+    
+    if "yes" in opinion:
+        a = listen().lower()
+    else:
+        update_list_name = ["Added new feature", "Updated main.py"]
+        a = random.choice(update_list_name)
+    
     command_writer(f"git commit -m \"{a}\"", 2)
     command_writer("git push origin master", 11)
     command_writer("exit", 1)
