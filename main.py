@@ -359,6 +359,9 @@ if __name__ == '__main__':
             name_searcher(directory)
             continue
             
+        elif "your name" in command:
+            speak("My name is not defined but you can call me with any name..")
+            
         else:
             print("Sorry i can't help you in that...\n")
 
