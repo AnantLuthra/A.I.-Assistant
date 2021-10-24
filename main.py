@@ -233,17 +233,26 @@ def listen():
         query = r.recognize_google(audio, language='en-in') #Using google for voice recognition.
         print(f"User said: {query}\n")  #User query will be printed.
 
+    except sr.RequestError:
+        speak("Please check your internet connection..")
+
+
     except Exception as e:
-        # print(e)    
+        print(e)
         print("Say that again please...")   #Say that again will be printed in case of improper voice 
-        return "None" #None string will be returned
+        return "None" #None string will be returned.
+    
     return query
+    
 
 if __name__ == '__main__':
     wisher()
 
     while True:
+        
         command = listen().lower()
+        
+        
         if 'play music' in command:
             speak("Ok playing...")
             music_folder = "D:\\d data\\New songs"
@@ -271,12 +280,12 @@ if __name__ == '__main__':
         elif 'who are you' in command:
             print("I am A.I. developed by Anant, I can help you. Tell me what to do?")
             speak("I am A.I. developed by Anant, I can help you. Tell me what to do?")
-            
+
         elif 'open google' in command:
             print("Opening...")
             speak("Opening...")
             os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome")
-        
+
         elif 'feeling tired' in command:
             speak("Should I play some music for you?")
             command = listen()
@@ -295,10 +304,10 @@ if __name__ == '__main__':
                     songs = os.listdir(music_folder)
                     a = random.randint(1, len(songs) - 1)
                     os.startfile(os.path.join(music_folder, songs[a]))
-                    
-            else:
-                speak("Ok sir...")
-         
+
+                else:
+                    speak("Ok sir...")
+
         elif command == "good job" or command == "thank you" or command == "thanks":
             speak("It's my pleasure sir...")
 
@@ -315,7 +324,7 @@ if __name__ == '__main__':
                 speak("Namaste.. Tell me how can i help you...")
             else:
                 speak("Hello sir i am poker tell me how may i help you...")
-        
+
         elif 'wikipedia' in command:
             try:
                 speak("Searching Wikipedia....")
@@ -324,23 +333,23 @@ if __name__ == '__main__':
                 speak("According to Wikipedia")
                 print(results)
                 speak(results)
-            
+
             except wikipedia.exceptions.PageError:
                 speak("Could not find about the given data..")
-            
+
             except Exception as e:
                 print("Something went wrong..")
-            
+
         elif 'open youtube' in command:
             webbrowser.open("youtube.com")
-        
+
         elif 'the time' in command:
             a = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir the time is{a}")
 
         elif 'switch window' in command:
             pyautogui.hotkey('alt', 'tab')
-        
+
         elif 'click on start' in command:
             pyautogui.press('win')
 
@@ -360,6 +369,7 @@ if __name__ == '__main__':
 
         elif command == 'update directory on github':
             speak("Ok sir getting up to date...")
+            pyautogui.hotkey('alt', 'tab')
             os.startfile(r"D:\Python projects")
             time.sleep(1)
             pyautogui.press('f11')
@@ -367,7 +377,7 @@ if __name__ == '__main__':
             directory = listen().lower()
             name_searcher(directory)
             continue
-            
+        
         elif "your name" in command:
             speak("My name is not defined but you can call me with any name..")
 
