@@ -252,7 +252,6 @@ if __name__ == '__main__':
         
         command = listen().lower()
         
-        
         if 'play music' in command:
             speak("Ok playing...")
             music_folder = "D:\\d data\\New songs"
