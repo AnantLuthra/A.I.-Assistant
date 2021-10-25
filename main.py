@@ -210,6 +210,12 @@ def name_searcher(directory):
     pyautogui.press("enter")
     after_reaching_directory()
 
+def url_open_google(url):
+    webbrowser.register('chrome',
+	None,
+	webbrowser.BackgroundBrowser("C://Program Files (x86)//Google//Chrome//Application//chrome.exe"))
+    webbrowser.get('chrome').open(url)
+
 def listen():
     '''
     Take command from the user by its voice and return a string as output.
@@ -340,11 +346,12 @@ if __name__ == '__main__':
                 print("Something went wrong..")
 
         elif 'open youtube' in command:
-            webbrowser.open("youtube.com")
+            url_open_google("youtube.com")
 
         elif 'the time' in command:
             a = datetime.datetime.now().strftime("%H:%M:%S")
-            speak(f"Sir the time is{a}")
+            list1 = a.split(":")
+            speak(f"Sir the time is{list1[0]} hours {list1[1]} minutes and {list1[2]} seconds.")
 
         elif 'switch window' in command:
             pyautogui.hotkey('alt', 'tab')
@@ -368,7 +375,7 @@ if __name__ == '__main__':
 
         elif command == 'update directory on github':
             speak("Ok sir getting up to date...")
-            pyautogui.hotkey('alt', 'tab')
+            pyautogui.hotkey('win', 'd')
             os.startfile(r"D:\Python projects")
             time.sleep(1)
             pyautogui.press('f11')
@@ -379,6 +386,22 @@ if __name__ == '__main__':
         
         elif "your name" in command:
             speak("My name is not defined but you can call me with any name..")
+
+        elif "typeracer" in command:
+            speak("Opening")
+            url_open_google("10ff.net")
+
+        elif "open typing master" in command:
+            speak("Opening")
+            os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\TypingMaster\Typing Master")
+
+        elif command == "close typing master":
+            speak("Ok closing")
+            task_closer("tmaster")
+        
+        elif "instagram" in command:
+            speak("Opening..")
+            url_open_google("instagram.com")
 
         else:
             print("Sorry i can't help you in that...\n")
