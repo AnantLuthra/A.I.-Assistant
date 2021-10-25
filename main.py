@@ -186,8 +186,8 @@ def after_reaching_directory():
     command_writer("git add .", 2)
     speak("Do you wanna add custom message for committing file?")
     opinion = listen().lower()
-    
     if "yes" in opinion:
+        speak("So tell your custom message...")
         a = listen().lower()
     else:
         update_list_name = ["Added new feature", "Updated main.py"]
@@ -404,5 +404,8 @@ if __name__ == '__main__':
             speak("Opening..")
             url_open_google("instagram.com")
 
+        elif "python playlist" in command:
+            speak("Opening..")
+            url_open_google("https://www.youtube.com/playlist?list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME")
         else:
             print("Sorry i can't help you in that...\n")
