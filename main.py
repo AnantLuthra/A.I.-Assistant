@@ -1,6 +1,7 @@
 import datetime, psutil, os, signal, requests, json, random, wikipedia, webbrowser, pyautogui, time
 import speech_recognition as sr
 from playsound import playsound
+from plyer import notification
 
 # Code for tuning voice of assistant into a famale voice...
 # import pyttsx3
@@ -242,7 +243,7 @@ def listen():
 
     except sr.RequestError:
         speak("Please check your internet connection..")
-
+        
 
     except Exception as e:
         print(e)
@@ -268,7 +269,7 @@ if __name__ == '__main__':
     while True:
         
         command = listen().lower()
-        
+
         if 'play music' in command:
             speak("Ok playing...")
             music_folder = "D:\\d data\\New songs"
@@ -419,19 +420,19 @@ if __name__ == '__main__':
             url_open_google("https://www.youtube.com/playlist?list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME")
 
         elif "sleep for" in command:
-            speak("For how much time sir...")
-            a = listen().lower()
-            time1 = a.split(" ")
-            if time1[1] == 'seconds':
-                time_sleep(time1[0], time1[1])
+            time_and_measure = command.split(" ")
+            time2 = ""
+            time_format = ""
+            for i in time_and_measure:
+                if time2 and time_format != "":
+                    break
+                if i.isnumeric():
+                    time2 = int(i)
+                if i == "seconds" or i == "minutes":
+                    time_format = i
             
-            elif time1[1] == 'minutes':
-                time_sleep(time1[0], time1[1])
-            
-            else:
-                speak("Didn't understand...")
-            
+            time_sleep(time2, time_format)
             speak("Waked up sir...Tell me what to do now...")
-            
+
         else:
             print("Sorry i can't help you in that...\n")
