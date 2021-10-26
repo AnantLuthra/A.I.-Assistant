@@ -195,7 +195,7 @@ def after_reaching_directory():
         a = random.choice(update_list_name)
     
     command_writer(f"git commit -m \"{a}\"", 2)
-    command_writer("git push origin master", 11)
+    command_writer("git push origin master", 10)
     command_writer("exit", 1)
     pyautogui.hotkey('alt', 'f4')
     pyautogui.hotkey('alt', 'tab')
@@ -325,7 +325,7 @@ if __name__ == '__main__':
                 else:
                     speak("Ok sir...")
 
-        elif command == "good job" or command == "thank you" or command == "thanks":
+        elif "good job" in command:
             speak("It's my pleasure sir...")
 
         elif command == "i want to play game" or command == "can you play me a game" or command == "game" or command == "i want to play a game" or command == "play me a game":
