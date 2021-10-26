@@ -251,6 +251,16 @@ def listen():
     
     return query
     
+def time_sleep(time2, time_format):
+    if time_format == "seconds":
+        speak(f"Ok sir sleeping for {time2} seconds...")
+        time.sleep(int(time2))
+    
+    elif time_format == "minutes":
+        speak(f"Ok sir sleeping for {time2} minutes...")
+        a = int(time2) * 60
+        time.sleep(a)
+
 
 if __name__ == '__main__':
     wisher()
@@ -407,5 +417,21 @@ if __name__ == '__main__':
         elif "python playlist" in command:
             speak("Opening..")
             url_open_google("https://www.youtube.com/playlist?list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME")
+
+        elif "sleep for" in command:
+            speak("For how much time sir...")
+            a = listen().lower()
+            time1 = a.split(" ")
+            if time1[1] == 'seconds':
+                time_sleep(time1[0], time1[1])
+            
+            elif time1[1] == 'minutes':
+                time_sleep(time1[0], time1[1])
+            
+            else:
+                speak("Didn't understand...")
+            
+            speak("Waked up sir...Tell me what to do now...")
+            
         else:
             print("Sorry i can't help you in that...\n")
