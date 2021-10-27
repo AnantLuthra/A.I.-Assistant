@@ -434,5 +434,8 @@ if __name__ == '__main__':
             time_sleep(time2, time_format)
             speak("Waked up sir...Tell me what to do now...")
 
+        elif "are you there" in command:
+            speak("Yes sir I am always their for you")
+
         else:
             print("Sorry i can't help you in that...\n")
