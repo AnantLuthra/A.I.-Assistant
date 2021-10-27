@@ -450,16 +450,16 @@ if __name__ == '__main__':
                     amount = more1.split(" ")
                     for i in more1:
                         if i == "little":
-                            pyautogui.scroll(-100)
-                            break
-                        if i == "jyada":
                             pyautogui.scroll(-200)
                             break
-                        if i == "bahut":
+                        if i == "jyada":
                             pyautogui.scroll(-300)
                             break
+                        if i == "bahut":
+                            pyautogui.scroll(-400)
+                            break
                         else:
-                            pyautogui.scroll(-100)
+                            pyautogui.scroll(-200)
                             break
 
                 else:
