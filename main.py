@@ -130,7 +130,7 @@ def snake_water_gun():
         playsound('D:\\game sounds\\Kids Cheering.mp3')
     else:
         print("Match draw !! Your played very well...")
-        playsound('D:\\game sounds\\match draw.mp3aw.mp3')
+        playsound('D:\\game sounds\\match draw.mp3')
 
 def wisher():
     '''
