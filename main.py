@@ -194,7 +194,7 @@ def after_reaching_directory():
         a = random.choice(update_list_name)
     
     command_writer(f"git commit -m \"{a}\"", 2)
-    command_writer("git push origin master", 10)
+    command_writer("git push origin master", 9)
     command_writer("exit", 1)
     pyautogui.hotkey('alt', 'f4')
     pyautogui.hotkey('alt', 'tab')
