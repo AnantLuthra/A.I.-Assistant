@@ -1,7 +1,6 @@
 import datetime, psutil, os, signal, requests, json, random, wikipedia, webbrowser, pyautogui, time
 import speech_recognition as sr
 from playsound import playsound
-from plyer import notification
 
 # Code for tuning voice of assistant into a famale voice...
 # import pyttsx3
@@ -162,7 +161,7 @@ def task_closer(app):
         for pid in (process.pid for process in psutil.process_iter() if process.name()==f"{app}.exe"):
             os.kill(pid, sig)
     except Exception as e:
-        speak("Something went wrong!! Couldn't close google chrome..")
+        speak("Something went wrong!! Couldn't close the given app...")
 
 def command_writer(word, sleep_time):
     for i in word:
@@ -436,6 +435,36 @@ if __name__ == '__main__':
 
         elif "are you there" in command:
             speak("Yes sir I am always their for you")
+
+        elif "wish me" in command:
+            speak("Best wishes for you sir...")
+
+        elif "scroll down" in command:
+            speak("Ok sir...")
+            time.sleep(2)
+            pyautogui.scroll(-50)
+            while True:
+                speak("Do you want to scroll down more???")
+                more1 = listen().lower()
+                if "yes" in more1:
+                    amount = more1.split(" ")
+                    for i in more1:
+                        if i == "little":
+                            pyautogui.scroll(-100)
+                            break
+                        if i == "jyada":
+                            pyautogui.scroll(-200)
+                            break
+                        if i == "bahut":
+                            pyautogui.scroll(-300)
+                            break
+                        else:
+                            pyautogui.scroll(-100)
+                            break
+
+                else:
+                    speak("Ok sir..")
+                    break
 
         else:
             print("Sorry i can't help you in that...\n")
