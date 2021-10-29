@@ -56,10 +56,15 @@ def news_teller():
         # print(news_dict['articles'])
         arts = news_dict['articles']
         speak("Speaking news.. Listen carefully....")
-        for articles in arts:
-            print(f"{articles['title']}\nMore-{articles['url']}\n")
-            speak(articles['title'])
-            speak("Moving on to the next news..")
+        a = len(arts)
+        for index, articles in enumerate(arts):
+            if index != a - 1:
+                print(f"{articles['title']}\nMore-{articles['url']}\n")
+                speak(articles['title'])
+                speak("Moving on to the next news..")
+            else:
+                print(f"{articles['title']}\nMore-{articles['url']}\n")
+                speak(articles['title'])
         speak("Thanks for listening")
     except Exception as e:
         print(e)
@@ -438,6 +443,10 @@ if __name__ == '__main__':
 
         elif "wish me" in command:
             speak("Best wishes for you sir...")
+
+        elif "tekken 3" in command:
+            speak("Opening")
+            os.startfile(r"D:\d data\takken 3\Tekken_3")
 
         elif "scroll down" in command:
             speak("Ok sir...")
