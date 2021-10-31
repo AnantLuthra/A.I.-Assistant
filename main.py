@@ -474,6 +474,10 @@ if __name__ == '__main__':
                 else:
                     speak("Ok sir..")
                     break
+        
+        elif command == "minimise all windows":
+            speak("Ok sir..")
+            pyautogui.hotkey('win', 'd')
 
         else:
             print("Sorry i can't help you in that...\n")
