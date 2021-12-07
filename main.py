@@ -274,210 +274,214 @@ if __name__ == '__main__':
         
         command = listen().lower()
 
-        if 'play music' in command:
-            speak("Ok playing...")
-            music_folder = "D:\\d data\\New songs"
-            songs = os.listdir(music_folder)
-            a = random.randint(1, len(songs) - 1)
-            os.startfile(os.path.join(music_folder, songs[a]))
+        try:
+            if 'play music' in command:
+                speak("Ok playing...")
+                music_folder = "D:\\d data\\New songs"
+                songs = os.listdir(music_folder)
+                a = random.randint(1, len(songs) - 1)
+                os.startfile(os.path.join(music_folder, songs[a]))
 
-        elif command == "kya baja diya ye band kr ise" or command == "stop music" or command == "close music":
-            speak("Ok closing..")
-            task_closer("Music.UI")
+            elif command == "kya baja diya ye band kr ise" or command == "stop music" or command == "close music":
+                speak("Ok closing..")
+                task_closer("Music.UI")
 
-        elif command == "close chrome" or command == "exit chrome" or command == "close google chrome" or command == "google band kar de":
-            speak("Ok closing...")
-            task_closer("chrome")
+            elif command == "close chrome" or command == "exit chrome" or command == "close google chrome" or command == "google band kar de":
+                speak("Ok closing...")
+                task_closer("chrome")
 
-        elif 'open code' in command:
-            speak("Opening...")
-            os.startfile(r"C:\Users\star\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code")
+            elif 'open code' in command:
+                speak("Opening...")
+                os.startfile(r"C:\Users\star\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code")
 
-        elif 'quit' in command:
-            print("Ok closing..")
-            speak("Ok sir have a good day ...")
-            break
+            elif 'quit' in command:
+                print("Ok closing..")
+                speak("Ok sir have a good day ...")
+                break
 
-        elif 'who are you' in command:
-            print("I am A.I. developed by Anant, I can help you. Tell me what to do?")
-            speak("I am A.I. developed by Anant, I can help you. Tell me what to do?")
+            elif 'who are you' in command:
+                print("I am A.I. developed by Anant, I can help you. Tell me what to do?")
+                speak("I am A.I. developed by Anant, I can help you. Tell me what to do?")
 
-        elif 'open google' in command:
-            print("Opening...")
-            speak("Opening...")
-            os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome")
+            elif 'open google' in command:
+                print("Opening...")
+                speak("Opening...")
+                os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome")
 
-        elif 'feeling tired' in command:
-            speak("Should I play some music for you?")
-            command = listen()
-            if command == "ok" or command == "ok poker" or command == "yes":
-                speak("Which type of music do want to play.. binaural beats or lyrics one??")
-                command = listen().lower()
-                if "binaural beats" in command:
-                    speak("Ok playing...")
-                    music_folder = "D:\\d data\\NCS music"
-                    songs = os.listdir(music_folder)
-                    a = random.randint(1, len(songs) - 1)
-                    os.startfile(os.path.join(music_folder, songs[a]))
-                elif "lyrics one" in command:
-                    speak("Ok playing...")
-                    music_folder = "D:\\d data\\New songs"
-                    songs = os.listdir(music_folder)
-                    a = random.randint(1, len(songs) - 1)
-                    os.startfile(os.path.join(music_folder, songs[a]))
+            elif 'feeling tired' in command:
+                speak("Should I play some music for you?")
+                command = listen()
+                if command == "ok" or command == "ok poker" or command == "yes":
+                    speak("Which type of music do want to play.. binaural beats or lyrics one??")
+                    command = listen().lower()
+                    if "binaural beats" in command:
+                        speak("Ok playing...")
+                        music_folder = "D:\\d data\\NCS music"
+                        songs = os.listdir(music_folder)
+                        a = random.randint(1, len(songs) - 1)
+                        os.startfile(os.path.join(music_folder, songs[a]))
+                    elif "lyrics one" in command:
+                        speak("Ok playing...")
+                        music_folder = "D:\\d data\\New songs"
+                        songs = os.listdir(music_folder)
+                        a = random.randint(1, len(songs) - 1)
+                        os.startfile(os.path.join(music_folder, songs[a]))
 
+                    else:
+                        speak("Ok sir...")
+
+            elif "good job" in command:
+                speak("It's my pleasure sir...")
+
+            elif command == "i want to play game" or command == "can you play me a game" or command == "game" or command == "i want to play a game" or command == "play me a game":
+                speak("Ok sir")
+                snake_water_gun()
+
+            elif 'news' in command:
+                speak("Ok Sir...")
+                news_teller()
+
+            elif command == "hii" or command == "hi" or command == "hello" or command == "namaste":
+                if command == "namaste":
+                    speak("Namaste.. Tell me how can i help you...")
                 else:
-                    speak("Ok sir...")
+                    speak("Hello sir i am poker tell me how may i help you...")
 
-        elif "good job" in command:
-            speak("It's my pleasure sir...")
+            elif 'wikipedia' in command:
+                try:
+                    speak("Searching Wikipedia....")
+                    command = command.replace("wikepedia", "")
+                    results = wikipedia.summary(command, sentences=3)
+                    speak("According to Wikipedia")
+                    print(results)
+                    speak(results)
 
-        elif command == "i want to play game" or command == "can you play me a game" or command == "game" or command == "i want to play a game" or command == "play me a game":
-            speak("Ok sir")
-            snake_water_gun()
+                except wikipedia.exceptions.PageError:
+                    speak("Could not find about the given data..")
 
-        elif 'news' in command:
-            speak("Ok Sir...")
-            news_teller()
+                except Exception as e:
+                    print("Something went wrong..")
 
-        elif command == "hii" or command == "hi" or command == "hello" or command == "namaste":
-            if command == "namaste":
-                speak("Namaste.. Tell me how can i help you...")
-            else:
-                speak("Hello sir i am poker tell me how may i help you...")
+            elif 'open youtube' in command:
+                url_open_google("youtube.com")
 
-        elif 'wikipedia' in command:
-            try:
-                speak("Searching Wikipedia....")
-                command = command.replace("wikepedia", "")
-                results = wikipedia.summary(command, sentences=3)
-                speak("According to Wikipedia")
-                print(results)
-                speak(results)
+            elif 'the time' in command:
+                a = datetime.datetime.now().strftime("%H:%M:%S")
+                list1 = a.split(":")
+                speak(f"Sir the time is{list1[0]} hours {list1[1]} minutes and {list1[2]} seconds.")
 
-            except wikipedia.exceptions.PageError:
-                speak("Could not find about the given data..")
+            elif 'switch window' in command:
+                pyautogui.hotkey('alt', 'tab')
 
-            except Exception as e:
-                print("Something went wrong..")
+            elif 'click on start' in command:
+                pyautogui.press('win')
 
-        elif 'open youtube' in command:
-            url_open_google("youtube.com")
+            elif 'open settings' in command:
+                pyautogui.press('win')
+                time.sleep(1)
+                pyautogui.moveTo(x=23, y=655)
+                pyautogui.click()
 
-        elif 'the time' in command:
-            a = datetime.datetime.now().strftime("%H:%M:%S")
-            list1 = a.split(":")
-            speak(f"Sir the time is{list1[0]} hours {list1[1]} minutes and {list1[2]} seconds.")
+            elif 'startup folder' in command:
+                pyautogui.hotkey('win', 'r')
+                time.sleep((.5))
+                textt = "shell:startup"
+                for i in textt:
+                    pyautogui.press(i)
+                pyautogui.press('enter')
 
-        elif 'switch window' in command:
-            pyautogui.hotkey('alt', 'tab')
-
-        elif 'click on start' in command:
-            pyautogui.press('win')
-
-        elif 'open settings' in command:
-            pyautogui.press('win')
-            time.sleep(1)
-            pyautogui.moveTo(x=23, y=655)
-            pyautogui.click()
-
-        elif 'startup folder' in command:
-            pyautogui.hotkey('win', 'r')
-            time.sleep((.5))
-            textt = "shell:startup"
-            for i in textt:
-                pyautogui.press(i)
-            pyautogui.press('enter')
-
-        elif command == 'update directory on github':
-            speak("Ok sir getting up to date...")
-            pyautogui.hotkey('win', 'd')
-            os.startfile(r"D:\Python projects")
-            time.sleep(1)
-            pyautogui.press('f11')
-            speak("Which directory you want to update on github?")
-            directory = listen().lower()
-            name_searcher(directory)
-            continue
-        
-        elif "your name" in command:
-            speak("My name is not defined but you can call me with any name..")
-
-        elif "typeracer" in command:
-            speak("Opening")
-            url_open_google("10ff.net")
-
-        elif "open typing master" in command:
-            speak("Opening")
-            os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\TypingMaster\Typing Master")
-
-        elif command == "close typing master":
-            speak("Ok closing")
-            task_closer("tmaster")
-        
-        elif "instagram" in command:
-            speak("Opening..")
-            url_open_google("instagram.com")
-
-        elif "python playlist" in command:
-            speak("Opening..")
-            url_open_google("https://www.youtube.com/playlist?list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME")
-
-        elif "sleep for" in command:
-            time_and_measure = command.split(" ")
-            time2 = ""
-            time_format = ""
-            for i in time_and_measure:
-                if time2 and time_format != "":
-                    break
-                if i.isnumeric():
-                    time2 = int(i)
-                if i == "seconds" or i == "minutes":
-                    time_format = i
+            elif command == 'update directory on github':
+                speak("Ok sir getting up to date...")
+                pyautogui.hotkey('win', 'd')
+                os.startfile(r"D:\Python projects")
+                time.sleep(1)
+                pyautogui.press('f11')
+                speak("Which directory you want to update on github?")
+                directory = listen().lower()
+                name_searcher(directory)
+                continue
             
-            time_sleep(time2, time_format)
-            speak("Waked up sir...Tell me what to do now...")
+            elif "your name" in command:
+                speak("My name is not defined but you can call me with any name..")
 
-        elif "are you there" in command:
-            speak("Yes sir I am always their for you")
+            elif "typeracer" in command:
+                speak("Opening")
+                url_open_google("10ff.net")
 
-        elif "wish me" in command:
-            speak("Best wishes for you sir...")
+            elif "open typing master" in command:
+                speak("Opening")
+                os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\TypingMaster\Typing Master")
 
-        elif "tekken 3" in command:
-            speak("Opening")
-            os.startfile(r"D:\d data\takken 3\Tekken_3")
+            elif command == "close typing master":
+                speak("Ok closing")
+                task_closer("tmaster")
+            
+            elif "instagram" in command:
+                speak("Opening..")
+                url_open_google("instagram.com")
 
-        elif "scroll down" in command:
-            speak("Ok sir...")
-            time.sleep(2)
-            pyautogui.scroll(-50)
-            while True:
-                speak("Do you want to scroll down more???")
-                more1 = listen().lower()
-                if "yes" in more1:
-                    amount = more1.split(" ")
-                    for i in more1:
-                        if i == "little":
-                            pyautogui.scroll(-200)
-                            break
-                        if i == "jyada":
-                            pyautogui.scroll(-300)
-                            break
-                        if i == "bahut":
-                            pyautogui.scroll(-400)
-                            break
-                        else:
-                            pyautogui.scroll(-200)
-                            break
+            elif "python playlist" in command:
+                speak("Opening..")
+                url_open_google("https://www.youtube.com/playlist?list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME")
 
-                else:
-                    speak("Ok sir..")
-                    break
-        
-        elif command == "minimise all windows":
-            speak("Ok sir..")
-            pyautogui.hotkey('win', 'd')
+            elif "sleep for" in command:
+                time_and_measure = command.split(" ")
+                time2 = ""
+                time_format = ""
+                for i in time_and_measure:
+                    if time2 and time_format != "":
+                        break
+                    if i.isnumeric():
+                        time2 = int(i)
+                    if i == "seconds" or i == "minutes":
+                        time_format = i
+                
+                time_sleep(time2, time_format)
+                speak("Waked up sir...Tell me what to do now...")
 
-        else:
-            print("Sorry i can't help you in that...\n")
+            elif "are you there" in command:
+                speak("Yes sir I am always their for you")
+
+            elif "wish me" in command:
+                speak("Best wishes for you sir...")
+
+            elif "tekken 3" in command:
+                speak("Opening")
+                os.startfile(r"D:\d data\takken 3\Tekken_3")
+
+            elif "scroll down" in command:
+                speak("Ok sir...")
+                time.sleep(2)
+                pyautogui.scroll(-50)
+                while True:
+                    speak("Do you want to scroll down more???")
+                    more1 = listen().lower()
+                    if "yes" in more1:
+                        amount = more1.split(" ")
+                        for i in more1:
+                            if i == "little":
+                                pyautogui.scroll(-200)
+                                break
+                            if i == "jyada":
+                                pyautogui.scroll(-300)
+                                break
+                            if i == "bahut":
+                                pyautogui.scroll(-400)
+                                break
+                            else:
+                                pyautogui.scroll(-200)
+                                break
+
+                    else:
+                        speak("Ok sir..")
+                        break
+            
+            elif command == "minimise all windows":
+                speak("Ok sir..")
+                pyautogui.hotkey('win', 'd')
+
+            else:
+                print("Sorry i can't help you in that...\n")
+
+        except Exception as e:
+            speak("Something went wrong..")
